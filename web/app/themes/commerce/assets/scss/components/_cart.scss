@@ -1,0 +1,80 @@
+.woocommerce-cart{
+    .woocommerce{
+        padding-top: 150px;
+        padding-bottom: 100px;
+        @apply container;
+
+        &-cart-form{
+            &__contents{
+                width: 100%;
+
+                thead th{
+                    @apply font-display text-primary py-3 bg-button;
+                }
+            }
+
+            &__cart-item{
+                @apply bg-light;
+
+                .product-name{
+                    padding-left: 2rem;
+                    a{
+                        @apply font-bold text-primary pb-3;
+                    }
+
+                    .variation{
+                        @apply block pt-3;
+                    }
+                }
+
+                .product-thumbnail{
+                    width: 10rem;
+                }
+
+                .product-price,
+                .product-quantity,
+                .product-subtotal{
+                    @apply text-center;
+                }
+
+                .product-remove{
+                    @apply w-10 px-4;
+
+                    a{
+                        @apply text-white bg-button font-bold rounded rounded-full inline-block py-2 px-4 transition-colors duration-300 hover:bg-yellow-600;
+                    }
+                }
+            }
+
+            tr{
+                &:last-child{
+                    @apply py-40;
+                }
+            }
+
+            .button{
+                @apply py-3 uppercase px-7 bg-button inline-block transition-colors duration-300 hover:bg-yellow-600 rounded rounded-full text-white font-bold mt-4 mb-4;
+            }
+        }
+
+        .cart-collaterals{
+            @apply w-full py-10;
+
+            .cart_totals {
+                @apply md:w-3/12 w-full px-8 py-10 bg-gradient-to-bl from-blue-300 to-purple-200 ml-auto;
+
+                h2{
+                    @apply font-display text-yellow-600 font-bold mb-5;
+                }
+
+                .shop_table{
+                    @apply w-full text-white mb-10;
+
+                    td{
+                        @apply text-right py-1;
+                    }
+                }
+            }
+        }
+    }
+}

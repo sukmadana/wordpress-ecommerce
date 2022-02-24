@@ -1,0 +1,116 @@
+.woocommerce-checkout{
+    @apply bg-gradient-to-br from-purple-100 to-light;
+    .woocommerce{
+        padding-top: 150px;
+        padding-bottom: 100px;
+
+        @apply container;
+
+        &-billing-fields{
+            margin-bottom: 3rem;
+            h3{
+                @apply font-display text-primary font-bold text-3xl mb-10;
+            }
+            
+            .form-row{
+                @apply mb-5;
+                .woocommerce-input-wrapper{
+                    @apply block;
+
+                    .input-text {
+                        border: 1px solid #aaa;
+                        border-radius: 4px;
+                        height: 30px;
+                        width: 100%;
+                        @apply px-3 text-sm;
+                    }
+
+                    textarea{
+                        @apply w-full;
+                    }
+                }
+            }
+
+            
+        }
+
+        &-additional-fields{
+            h3{
+                @apply mb-3 font-display text-primary font-bold text-xl;
+            }
+            .form-row{
+                @apply mb-5;
+                .woocommerce-input-wrapper{
+                    @apply block;
+
+                    .input-text {
+                        border: 1px solid #aaa;
+                        border-radius: 4px;
+                        min-height: 80px;
+                        width: 100%;
+                        @apply px-3 text-sm;
+                    }
+
+                }
+            }
+        }
+
+        .col2-set{
+            @apply w-1/2 pr-12;
+        }
+
+        &-checkout{
+            @apply flex;
+        }
+
+        #order_review_heading{
+            display: none;
+        }
+
+        &-checkout-review-order{
+            @apply w-1/2 px-5 pt-14;
+
+            &-table{
+                @apply w-full mb-5;
+
+                thead th{
+                    @apply bg-button text-left;
+                }
+
+                .cart_item{
+                    @apply bg-light;
+                    
+                    td{
+                        @apply py-3;
+                    }
+                }
+
+                tfoot{
+                    .cart-subtotal{
+                        th,
+                        td{
+                            padding-top: 1.5rem;
+                            padding-bottom: 0.75rem;
+                        }
+                    }
+                }
+            }
+
+            .wc_payment_methods{
+                @apply mb-5;
+
+                label{
+                    @apply text-primary font-bold;
+                }
+            }
+
+            .woocommerce-terms-and-conditions-wrapper{
+                @apply mb-8;
+
+                .woocommerce-privacy-policy-text{
+                    @apply text-sm text-gray-400;
+                }
+            }
+        }
+    }
+}

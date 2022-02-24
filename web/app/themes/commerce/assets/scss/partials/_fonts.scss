@@ -1,0 +1,8 @@
+@font-face {
+    font-family: "Bangla MN";
+    src: url("../../assets/font/BanglaMN/Bangla-MN.woff") format("woff"), /* chrome、firefox */
+    url("../../assets/font/BanglaMN/Bangla-MN.ttf") format("truetype"); /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    font-display: swap;
+    font-style:normal;
+    -webkit-font-smoothing: antialiased;
+}
