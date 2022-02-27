@@ -14,5 +14,22 @@ html {
 }
 
 .button{
-  @apply py-3 uppercase px-7 bg-button inline-block transition-colors duration-300 hover:bg-yellow-600 rounded rounded-full text-white font-bold;
+  @apply py-3 uppercase px-7 bg-button border-2 border-button inline-block transition-colors duration-300 hover:bg-yellow-600 hover:border-yellow-600 rounded rounded-full text-white font-bold;
+}
+
+.button-secondary{
+  @apply py-3 uppercase px-7 border-2 border-button inline-block transition-colors duration-300 cursor-pointer hover:bg-button hover:text-white rounded rounded-full text-button font-bold;
+
+    .ajax-loading & {
+        opacity: 0.3;
+        pointer-events: none;
+    }
+}
+
+.ajax-notification{
+  padding-top: 20px;
+
+  .notif-success{
+    @apply text-sm text-green-600;
+  }
 }

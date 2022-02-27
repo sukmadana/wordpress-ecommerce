@@ -65,3 +65,56 @@
     background-position: 0% 50%
   }
 }
+
+/* Spinner Circle Rotation */
+.sp-circle {
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  top: 25%;
+  left: 40%;
+  transform: translate3d(-50%, -50%, 0);
+  border: 4px rgba(#6A5ADF, 0.25) solid;
+  border-top: 4px rgba(#6A5ADF, 1) solid;
+  border-radius: 50%;
+  -webkit-animation: spCircRot 0.6s infinite linear;
+  animation: spCircRot 0.6s infinite linear;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 200ms ease-in;
+
+  .ajax-loading & {
+      opacity: 1;
+      visibility: visible;
+  }
+}
+
+@-webkit-keyframes spCircRot {
+  from {
+      -webkit-transform: rotate(0deg);
+  }
+
+  to {
+      -webkit-transform: rotate(359deg);
+  }
+}
+
+@keyframes spCircRot {
+  from {
+      transform: rotate(0deg);
+  }
+
+  to {
+      transform: rotate(359deg);
+  }
+}
+
+@keyframes transform-move {
+  0% {
+      transform: translatex(-110%);
+  }
+
+  100% {
+      transform: translatex(110%);
+  }
+}

@@ -12,6 +12,13 @@ class Woocommerce{
         if(!class_exists('WC_Product_Variable')){
             include(plugin_url.'/woocommerce/includes/class-wc-product-variable.php');// adjust the link
         }
+
+        add_filter( 'woocommerce_defer_transactional_emails', '__return_true' );
+
+        add_filter( 'woocommerce_add_to_cart_validation', [$this,'only_one_items_allowed_add_to_cart'], 10, 3 );
+        add_filter( 'woocommerce_update_cart_validation', [$this,'only_one_items_allowed_cart_update'], 10, 4 );
+
+        add_action( 'phpmailer_init', [$this,'send_smtp_email'] );
     }
     
 
@@ -44,5 +51,41 @@ class Woocommerce{
             )
         );
         
+    }
+
+    public function only_one_items_allowed_add_to_cart( $passed, $product_id, $quantity ) {
+
+        $cart_items_count = WC()->cart->get_cart_contents_count();
+        $total_count = $cart_items_count + $quantity;
+    
+        if( $cart_items_count >= 1 || $total_count > 1 ){
+            $passed = false;
+            wc_add_notice( __( "You can’t have more than 1 item in cart", "woocommerce" ), "error" );
+        }
+        return $passed;
+    }
+
+    public function only_one_items_allowed_cart_update( $passed, $cart_item_key, $values, $updated_quantity ) {
+
+        $cart_items_count = WC()->cart->get_cart_contents_count();
+        $original_quantity = $values['quantity'];
+        $total_count = $cart_items_count - $original_quantity + $updated_quantity;
+    
+        if( $cart_items_count > 1 || $total_count > 1 ){
+            $passed = false;
+            wc_add_notice( __( "You can’t have more than 1 item in cart", "woocommerce" ), "error" );
+        }
+        return $passed;
+    }
+
+    public function send_smtp_email( $phpmailer ) {
+        $phpmailer->isSMTP();
+        $phpmailer->Host       = SMTP_HOST;
+        $phpmailer->SMTPAuth   = true;
+        $phpmailer->Port       = SMTP_PORT;
+        $phpmailer->Username   = SMTP_USERNAME;
+        $phpmailer->Password   = SMTP_PASSWORD;
+        $phpmailer->From       = SMTP_FROM;
+        $phpmailer->FromName   = SMTP_FROMNAME;
     }
 }

@@ -1,6 +1,6 @@
 class Checkout {
     constructor() {
-        let wrapper = document.querySelector('.woocommerce-checkout')
+        let wrapper = document.querySelector('#send-enquiry')
 
         if (!document.body.contains(wrapper)) {
             return false
@@ -13,9 +13,7 @@ class Checkout {
         let btn = document.getElementById('send-enquiry')
 
         document.addEventListener('click', (e)=> {
-            e.preventDefault()
-            if (e.target == btn || e.target.closest == '#send-enquiry') {
-                console.log('object');
+            if (e.target.id == 'send-enquiry') {
             this.runAjax()
             }
             
@@ -23,32 +21,36 @@ class Checkout {
     }
 
     runAjax(){
-        let dataForm = document.querySelector('.woocommerce-checkout')
-        const data = new FormData(dataForm);
-        data.append('action', 'send_inquiry_data');
+        let form = document.querySelector('form[name="checkout"]')
+        let notifEl = document.querySelector('.ajax-notification')
 
-        console.log(data);
+        const formData = new FormData(form);
+        formData.append('action', 'send_inquiry_data');
+        document.body.classList.add('ajax-loading')
 
-        // let fetchData = {
-        //     method: 'POST',
-        //     headers: {
-        //         'X-Requested-With': 'XMLHttpRequest'
-        //     },
-        //     credentials: 'same-origin',
-        //     body: data
-        // };
+        let fetchData = {
+            method: 'POST',
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest'
+            },
+            credentials: 'same-origin',
+            body: formData
+        };
 
-        // fetch(ajaxurl, fetchData)
-        //     .then(response => {
-        //         return response.json();
-        //     })
-        //     .then(data => {
-        //         console.log(data);
-        //     })
-        //     .catch(err => {
-        //         // eslint-disable-next-line no-console
-        //         console.log(err);
-        //     });
+        fetch(ajaxurl, fetchData)
+            .then(response => {
+                return response.json();
+            })
+            .then(data => {
+                if (data) {
+                    document.body.classList.remove('ajax-loading')
+                    notifEl.innerHTML = '<span class="notif-success">Thank you for contacting us. One of our colleagues will get back in touch with you soon!Have a great day!</span>'
+                }
+            })
+            .catch(err => {
+                // eslint-disable-next-line no-console
+                console.log(err);
+            });
     }
 }
 

@@ -1,5 +1,5 @@
 .product-single-item{
-    padding-top: 150px;
+    padding-top: 180px;
     padding-bottom: 100px;
     @apply bg-light;
 
@@ -49,5 +49,21 @@
 
     .button-disable{
         @apply cursor-not-allowed bg-gray-200 hover:bg-gray-400;
+    }
+}
+
+.single-product{
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    .woocommerce-notices-wrapper{
+        position: absolute;
+        top: 110px;
+        left: 50%;
+
+        .woocommerce-error{
+            @apply bg-red-300 py-3 px-5 rounded rounded-md z-50 font-bold text-white;
+        }
     }
 }

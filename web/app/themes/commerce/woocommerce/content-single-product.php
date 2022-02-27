@@ -46,7 +46,7 @@ if ( post_password_required() ) {
 	
 	?>
 
-	<div class="summary entry-summary flex-1 w-64">
+	<div class="summary entry-summary flex-1 w-64" data-sal="slide-up" data-sal-duration="1000" data-sal-easing="cubic-bezier(0.45,0.05,0.55,0.95);">
 		
 		<?php
 

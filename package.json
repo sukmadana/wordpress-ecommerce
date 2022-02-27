@@ -30,5 +30,8 @@
     "sass-loader": "7.*",
     "tailwindcss": "^2.1.2",
     "vue-template-compiler": "^2.6.12"
+  },
+  "dependencies": {
+    "sal.js": "^0.8.5"
   }
 }

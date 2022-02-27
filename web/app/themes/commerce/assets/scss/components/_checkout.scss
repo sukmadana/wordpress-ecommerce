@@ -112,5 +112,67 @@
                 }
             }
         }
+
+        .form-row{
+            .button{
+                margin-right: 1.5rem;
+            }
+        }
+    }
+}
+
+.woocommerce-order{
+    @apply flex flex-wrap;
+    .woocommerce-notice{
+        margin-bottom: 40px;
+        @apply text-green-400 w-screen block;
+    }
+    &-overview{
+        @apply mb-10 w-3/4;
+        &__order{
+            @apply font-display font-medium text-primary mb-4;
+        }
+    }
+
+    .woocommerce-bacs-bank-details{
+        @apply w-1/4;
+
+        .wc-bacs-bank-details-heading{
+            @apply font-display font-medium text-lg text-primary mb-3;
+        }
+    }
+
+    &-details{
+        @apply w-full;
+
+        &__title{
+            @apply font-display font-medium text-lg text-primary mb-5;
+        }
+
+        .woocommerce-table {
+            @apply w-full text-left;
+
+            thead th{
+                @apply py-5 bg-button text-primary px-3;
+            }
+
+            tbody{
+                th,
+                td{
+                    @apply px-3 py-5;
+                }
+
+                tr{
+                    @apply bg-light;
+                }
+            }
+
+            tfoot{
+                th,
+                td{
+                    @apply px-3;
+                }
+            }
+        }
     }
 }

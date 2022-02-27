@@ -4,6 +4,20 @@
         padding-bottom: 100px;
         @apply container;
 
+        .cart-empty {
+            @apply mb-10;
+        }
+
+        .woocommerce-message{
+            @apply mb-5 text-green-600;
+
+            .wc-forward{
+                display: none;
+            }
+        }
+
+        
+
         &-cart-form{
             &__contents{
                 width: 100%;
